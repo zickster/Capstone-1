@@ -41,7 +41,7 @@ include('../../includes/db.php');
         }elseif ($pass==$pass1 && $c==0){
 //Enter valid data into DB
 		$password=md5($pass);
-		mysqli_query($db, "INSERT INTO users (fname, lname, email, password, phone, level, date) 
+		mysqli_query($db, "INSERT INTO tbl_users (fname, lname, email, password, phone, level, date) 
 					      VALUES ('$fname', '$lname', '$email', '$password', '$phone', '$level', NOW())");
                	mysqli_close($db);
                         header('Location: index.php');
