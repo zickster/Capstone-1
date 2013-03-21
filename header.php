@@ -62,13 +62,13 @@ $tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY na
                                         if( $trow = mysqli_fetch_array($tresults)){
                                                 do{
 ?>
-                                                <li><a href="colleges.php?id=<?php echo $trow['id'] ?>"><?php echo $trow['name'] ?></a></li>
+                                                <li><a href="dept.php?id=<?php echo $trow['id'] ?>"><?php echo $trow['name'] ?></a></li>
 <?php
                                                 }while($trow = mysqli_fetch_array($tresults));
                                         }
 					if($count>5){
 ?>
-                                                <li><a href="more_colleges.php">More Colleges...</a></li>
+                                                <li><a href="more_depts.php">More Colleges...</a></li>
 <?php
 }
 ?>
