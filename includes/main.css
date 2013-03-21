@@ -1,0 +1,97 @@
+
+  
+body.mainbody {
+	background-color: #E6DC97;
+}
+.headercontainer {
+	background-color: #E6DC97;
+	padding-bottom:40px;
+	margin-bottom:40px;
+	width: 85%;
+	margin:0px auto;
+}
+.container
+{ background-color:#FFF;
+margin:0px auto;
+width: 85%;
+padding-bottom:20px;
+padding-top:20px;
+//margin-top:40px;
+}
+  
+#divdiv {
+	background-color: #A5B461;
+	width: 1032px;
+	margin: 20px;
+}
+#divdiv ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+#divdiv ul li {
+	//float: left;
+	position: relative;
+}
+.table1 {
+	border-collapse: collapse;
+}
+
+#divdiv ul li a {
+	line-height: 30px;
+	background-color: #A5B461;
+	height: 30px;
+	width: 200px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #E6DC97;
+	border-right-color: #E6DC97;
+	border-bottom-color: #E6DC97;
+	border-left-color: #E6DC97;
+	text-align: center;
+	display: block;
+	color: #000;
+	text-decoration: none;
+}
+#divdiv ul li:hover ul li {
+	visibility: visible;
+}
+#divdiv ul li a:hover {
+	background-color: #E6DC97;
+}
+#divdiv ul ul {
+	position: absolute;
+	visibility: hidden;
+}
+#divdiv ul li ul {
+	position: absolute;
+	top: 31px;
+	visibility: hidden;
+}
+#divdiv ul li ul li a {
+	border: 1px solid #DBE791;
+}
+#wrapper {
+	margin-right: auto;
+	margin-left: auto;
+}
+a {
+	color: #000;
+	text-decoration: underline;
+}
+.table1 td {
+	width: 30%;
+}
+.red {
+	color:red;
+}
+.float_right {
+		float:right;
+	}
