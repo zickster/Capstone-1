@@ -52,13 +52,8 @@ include('includes/db.php');
         <ul>
 
 <?php
-//Count how many colleges are in the DB
-$cresults = mysqli_query($db, "SELECT count(id) FROM tbl_dept WHERE status=1");
-				$crow = mysqli_fetch_array($cresults);
-				$count=$crow['count(id)'];			
-
 //Retrieve required data from the DB and publish it on the page
-$tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY name LIMIT 0, 5");
+$tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY name");
                                         if( $trow = mysqli_fetch_array($tresults)){
                                                 do{
 ?>
@@ -66,11 +61,7 @@ $tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY na
 <?php
                                                 }while($trow = mysqli_fetch_array($tresults));
                                         }
-					if($count>5){
-?>
-                                                <li><a href="more_depts.php">More Colleges...</a></li>
-<?php
-}
+
 ?>
         </ul> 
       </li> 
