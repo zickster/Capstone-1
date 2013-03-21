@@ -48,17 +48,17 @@ include('includes/db.php');
   <table>
   <tr><td>
     <ul>
-      <li><a href="index.php">Colleges</a>
+      <li><a href="index.php">Departments</a>
         <ul>
 
 <?php
 //Count how many colleges are in the DB
-$cresults = mysqli_query($db, "SELECT count(id) FROM institutions WHERE status=1");
+$cresults = mysqli_query($db, "SELECT count(id) FROM departmentss WHERE status=1");
 				$crow = mysqli_fetch_array($cresults);
 				$count=$crow['count(id)'];			
 
 //Retrieve required data from the DB and publish it on the page
-$tresults = mysqli_query($db, "SELECT * FROM institutions WHERE status=1 ORDER BY name LIMIT 0, 5");
+$tresults = mysqli_query($db, "SELECT * FROM departments WHERE status=1 ORDER BY name LIMIT 0, 5");
                                         if( $trow = mysqli_fetch_array($tresults)){
                                                 do{
 ?>
