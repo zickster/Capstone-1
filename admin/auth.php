@@ -1,5 +1,5 @@
 	<?php
-        include('includes/db.php');
+        include('../includes/db.php');
 //c97198e9423a407d9c3dd6dda5d78f99
         # create a session cookie
         session_start();
@@ -25,7 +25,7 @@ echo $app_password."\n";
         $_SESSION['app_password'] = $app_password;
 	$password=md5($app_password);
         # query to search for this particular user in the users db
-        $sql = "SELECT * FROM users WHERE email = '$app_username' AND password = '$password' AND level='Administrator'";
+        $sql = "SELECT * FROM tbl_users WHERE email = '$app_username' AND password = '$password' AND level='Administrator'";
         $result = mysqli_query($db, $sql);
 
         # make sure the database is working correctly

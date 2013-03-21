@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="../includes/main.css" rel="stylesheet" type="text/css">
+<link href="includes/main.css" rel="stylesheet" type="text/css">
 
 <title>Florida Colleges</title>
 <script type="text/javascript">
@@ -12,7 +12,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 }
 </script>
 
-<link href="main.css" rel="stylesheet" type="text/css" />
 <?php
 //Import Header file
 require('header.php');
