@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link rel="stylesheet" href="includes/css.css" type="text/css">
+<link rel="stylesheet" href="../includes/css.css" type="text/css">
 <title>Log In</title>
 <?php
 //Create session variables 
