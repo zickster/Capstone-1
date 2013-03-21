@@ -59,12 +59,12 @@ if(!empty($_SESSION['app_username'])){
 
 <?php
 //Count how many colleges are in the DB
-$cresults = mysqli_query($db, "SELECT count(id) FROM institutions WHERE status=1");
+$cresults = mysqli_query($db, "SELECT count(id) FROM tbl_dept WHERE status=1");
                                 $crow = mysqli_fetch_array($cresults);
                                 $count=$crow['count(id)'];
 
 
-$tresults = mysqli_query($db, "SELECT * FROM institutions WHERE status=1 ORDER BY name LIMIT 0, 5");
+$tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY name LIMIT 0, 5");
                                         if( $trow = mysqli_fetch_array($tresults)){
                                                 do{
 ?>
