@@ -53,7 +53,7 @@ include('includes/db.php');
 
 <?php
 //Retrieve required data from the DB and publish it on the page
-$tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY name");
+$tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY sort_order");
                                         if( $trow = mysqli_fetch_array($tresults)){
                                                 do{
 ?>
