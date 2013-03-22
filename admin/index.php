@@ -24,13 +24,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <body class = "mainbody">
 <div class="container ">
 
-           <a href="add_institution.php">Add Colleges</a><br /> 
-           <a href="edit_institutions.php">Edit Colleges</a><br /> 
+           <a href="add_page.php">Add A Web Page</a><br /> 
            <a href="register.php">Add Account</a><br /> 
            <a href="list_account.php">Edit Accounts</a><br /> 
-           <a href="add_majors.php">Add Majors</a><br />
-	   <a href="add_sports.php">Add Sports</a><br />
-	   <a href="add_dresscode.php">Add Dress Code</a><br />
 	   <a href="reports.php">Search Historical Data</a><br />
 
 
