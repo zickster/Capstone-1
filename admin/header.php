@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="../includes/main.css" rel="stylesheet" type="text/css">
 
-<title>Florida Colleges</title>
+<title>Daily Living ToolKit</title>
 <script type="text/javascript">
 function MM_jumpMenu(targ,selObj,restore){ //v3.0
   eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
@@ -54,21 +54,15 @@ if(!empty($_SESSION['app_username'])){
   <table>
   <tr><td>
     <ul>
-      <li><a href="index.php">Colleges</a>
+      <li><a href="index.php">Departments</a>
         <ul>
 
 <?php
-//Count how many colleges are in the DB
-$cresults = mysqli_query($db, "SELECT count(id) FROM tbl_dept WHERE status=1");
-                                $crow = mysqli_fetch_array($cresults);
-                                $count=$crow['count(id)'];
-
-
 $tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY sort_order");
                                         if( $trow = mysqli_fetch_array($tresults)){
                                                 do{
 ?>
-                                                <li><a href="../colleges.php?id=<?php echo $trow['id'] ?>"><?php echo $trow['name'] ?></a></li>
+                                                <li><a href="../dept.php?id=<?php echo $trow['id'] ?>"><?php echo $trow['name'] ?></a></li>
 <?php
                                                 }while($trow = mysqli_fetch_array($tresults));
                                         }

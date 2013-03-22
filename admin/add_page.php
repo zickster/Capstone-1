@@ -13,6 +13,13 @@ include('../includes/db.php');
         if(isset($_POST['register'])){
 //Create counter
 		$c=0;
+//Create generic text field data
+		$art_text1="Enter article content here...";
+		$art_text2="Enter article content here...";
+		$art_text3="Enter article content here...";
+		$art_text4="Enter article content here...";
+		$art_text5="Enter article content here...";
+
 //Prevent sql injections, grab entered variable
                 $name = mysqli_real_escape_string($db, strip_tags( $_POST['name']));
                 $add1 = mysqli_real_escape_string($db, strip_tags( $_POST['add1']));
@@ -155,67 +162,56 @@ include('../includes/db.php');
  <form method="post" action="<?php echo $PHP_SELF;?>">
         <table border="1" class="table1">
                 <tr>
-                        <th><h2>Add Institution</h2></th>
+                        <th><h2>Add Page</h2></th>
                 </tr>
                 <tr>
                 <td>
                 <table>
                                 <tr>
-                                <td>Institution Name:</td><td><input type="text" name="name" value="<?php echo $name ?>" size="30"><span class="red"><?php echo $nm_error ?></span></td>
-                                <td>Address 1:</td><td><input type="text" name="add1" value="<?php echo $add1 ?>" size="30"><span class="red"><?php echo $a1_error ?></span></td>
+                                <td>Page Title:</td><td><input type="text" name="title" value="<?php echo $title ?>" size="85"><span class="red"><?php echo $ttl_error ?></span></td>
+                                <td>Sort Order:</td><td><input type="text" name="p_sort" value="<?php echo $p_sort ?>" size="2"><span class="red"><?php echo $ps_error ?></span></td>
+                                </tr>
+
+                                <tr>
+                                <td>Article Title:</td><td><input type="text" name="art_name1" value="<?php echo $art_name1 ?>" size="85"><span class="red"><?php echo $an1_error ?></span></td>
+                                <td>Sort Order:</td><td><input type="text" name="an1_sort" value="<?php echo $an1_sort ?>" size="2"></td>
                                 </tr>
                                 <tr>
-                                <td>Phone Number:</td><td><input type="text" name="phone" value="<?php echo $phone ?>" size="30"><span class="red"><?php echo $ph_error ?></span></td>
-                                <td>Address 2:</td><td><input type="text" name="add2" value="<?php echo $add2 ?>" size="30"></td>
+				<td>Article Content:</td><td><textarea name="art_text1" cols="70" rows="15" Value="<?php echo $art_text1 ?>"><?php echo $art_text1 ?></textarea><span class="red"><?php echo $at1_error ?></span></td>
+				</tr>
+
+                                <tr>
+                                <td>Article Title:</td><td><input type="text" name="art_name2" value="<?php echo $art_name2 ?>" size="85"></td>
+                                <td>Sort Order:</td><td><input type="text" name="an2_sort" value="<?php echo $an2_sort ?>" size="2"></td>
                                 </tr>
                                 <tr>
-                                <td>Student Polulation:</td><td><input type="text" name="pop" value="<?php echo $pop ?>" size="30"><span class="red"><?php echo $pop_error ?></span></td>
-                                <td>City:</td><td><input type="text" name="city" value="<?php echo $city ?>" size="30"><span class="red"><?php echo $city_error ?></span></td>
+                                <td>Article Content:</td><td><textarea name="art_text2" cols="70" rows="15" Value="<?php echo $art_text2 ?>"><?php echo $art_text2 ?></textarea></td>
+                                </tr>
+
+                                <tr>
+                                <td>Article Title:</td><td><input type="text" name="art_name3" value="<?php echo $art_name3 ?>" size="85"></td>
+                                <td>Sort Order:</td><td><input type="text" name="an3_sort" value="<?php echo $an3_sort ?>" size="2"></td>
                                 </tr>
                                 <tr>
-                                <td>In-State cost for 30 hours:</td><td><input type="text" name="cost" value="<?php echo $cost ?>" size="30"><span class="red"><?php echo $cost_error ?></span></td>
-                                <td>State:</td><td><input type="text" name="state" value="<?php echo $state ?>" size="30"><span class="red"><?php echo $state_error ?></span></td>
+                                <td>Article Content:</td><td><textarea name="art_text3" cols="70" rows="15" Value="<?php echo $art_text3 ?>"><?php echo $art_text3 ?></textarea></td>
+                                </tr>
+
+                                <tr>
+                                <td>Article Title:</td><td><input type="text" name="art_name4" value="<?php echo $art_name4 ?>" size="85"></td>
+                                <td>Sort Order:</td><td><input type="text" name="an4_sort" value="<?php echo $an4_sort ?>" size="2"></td>
                                 </tr>
                                 <tr>
-                                <td>Out-of-State cost for 30 hours:</td><td><input type="text" name="os_cost" value="<?php echo $os_cost ?>" size="30"><span class="red"><?php echo $os_cost_error ?></span></td>
-                                <td>Zip Code:</td><td><input type="text" name="zip" value="<?php echo $zip ?>" size="30"><span class="red"><?php echo $zip_error ?></span></td>
+                                <td>Article Content:</td><td><textarea name="art_text4" cols="70" rows="15" Value="<?php echo $art_text4 ?>"><?php echo $art_text4 ?></textarea></td>
+                                </tr>
+
+                                <tr>
+                                <td>Article Title:</td><td><input type="text" name="art_name5" value="<?php echo $art_name5 ?>" size="85"></td>
+                                <td>Sort Order:</td><td><input type="text" name="an5_sort" value="<?php echo $an5_sort ?>" size="2"></td>
                                 </tr>
                                 <tr>
-                                <td>Est. Room/Board:</td><td><input type="text" name="rb" value="<?php echo $rb ?>" size="30"><span class="red"><?php echo $rb_error ?></span></td>
+                                <td>Article Content:</td><td><textarea name="art_text5" cols="70" rows="15" Value="<?php echo $art_text5 ?>"><?php echo $art_text5 ?></textarea></td>
                                 </tr>
-                                <tr>
-                                <td>Est. books fees:</td><td><input type="text" name="books" value="<?php echo $books ?>" size="30"><span class="red"><?php echo $books_error ?></span></td>
-                                </tr>
-                                <tr>
-                                <td>GPA Summer Mid:</td><td><input type="text" name="gpa_summer_mid" value="<?php echo $gpa_summer_mid ?>" size="30"><span class="red"><?php echo $gpa_summer_mid_error ?></span></td>
-                                </tr>
-                                <tr>
-                                <td>GPA Fall Mid:</td><td><input type="text" name="gpa_fall_mid" value="<?php echo $gpa_fall_mid ?>" size="30"><span class="red"><?php echo $gpa_fall_mid_error ?></span></td>
-                                </tr>
-                                <tr>
-                                <td>SAT Summer Mid:</td><td><input type="text" name="sat_summer_mid" value="<?php echo $sat_summer_mid ?>" size="30"><span class="red"><?php echo $sat_summer_mid_error ?></span></td>
-                                </tr>
-                                <tr>
-                                <td>SAT Fall Mid:</td><td><input type="text" name="sat_fall_mid" value="<?php echo $sat_fall_mid ?>" size="30"><span class="red"><?php echo $sat_fall_mid_error ?></span></td>
-                                </tr>
-                                <tr>
-                                <td>ACT Summer Mid:</td><td><input type="text" name="act_summer_mid" value="<?php echo $act_summer_mid ?>" size="30"><span class="red"><?php echo $act_summer_mid_error ?></span></td>
-                                </tr>
-                                <tr>
-                                <td>ACT Fall Mid:</td><td><input type="text" name="act_fall_mid" value="<?php echo $act_fall_mid ?>" size="30"><span class="red"><?php echo $act_fall_mid_error ?></span></td>
-                                </tr>
-                                <tr>
-                                <td>Mascot:</td><td><input type="text" name="mascot" value="<?php echo $mascot ?>" size="30"><span class="red"><?php echo $mascot_error ?></span></td>
-                                </tr>
-                                <tr>
-                                <td>AP Credits Accepted:</td><td><input type="text" name="ap_credits" value="<?php echo $ap_credits ?>" size="30"><span class="red"><?php echo $ap_credits_error ?></span></td>
-                                </tr>
-                                <tr>
-                                <td>Application Deadline:</td><td><input type="text" name="app_deadline" value="<?php echo $app_deadline ?>" size="30"><span class="red"><?php echo $app_deadline_error ?></span></td>
-                                </tr>
-                                <tr>
-                                <td>URL for Schools site:</td><td><input type="text" name="link" value="<?php echo $link ?>" size="30"><span class="red"><?php echo $link_error ?></span></td>
-                                </tr>
+
                                 <tr>
                                 <td colspan="2">
                                 <input type="submit" name="register" value="Add" class="button"/>&nbsp;
