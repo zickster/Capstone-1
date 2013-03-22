@@ -93,7 +93,6 @@ include('../includes/db.php');
 	}elseif(!empty($art_name5) && empty($art_text5)){
                 $ans5_error="There must be text for this article.";
 				$c++;		
-	}				
 //If valid insert data
         }else{ if($c==0){
 //Enter valid data into DB
