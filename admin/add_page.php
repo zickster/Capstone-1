@@ -179,7 +179,12 @@ include('../includes/db.php');
                                 <tr>
 				<td>Article Content:</td><td><textarea name="art_text1" cols="70" rows="15" Value="<?php echo $art_text1 ?>"><?php echo $art_text1 ?></textarea><span class="red"><?php echo $at1_error ?></span></td>
 				</tr>
-
+				<tr>
+				<form enctype="multipart/form-data" method="post" action="file_upload_script.php">
+				<td>Article Image:</td><td><input name="art_file1" type="file" Value="<?php echo $art_file1 ?>" /></td>
+				<td><input type="submit" value="Upload It" /></td>
+				</form>
+				</tr>
                                 <tr>
                                 <td>Article Title:</td><td><input type="text" name="art_name2" value="<?php echo $art_name2 ?>" size="85"></td>
                                 <td>Sort Order:</td><td><input type="text" name="an2_sort" value="<?php echo $an2_sort ?>" size="2"></td>
@@ -187,7 +192,12 @@ include('../includes/db.php');
                                 <tr>
                                 <td>Article Content:</td><td><textarea name="art_text2" cols="70" rows="15" Value="<?php echo $art_text2 ?>"><?php echo $art_text2 ?></textarea></td>
                                 </tr>
-
+                                <tr>
+                                <form enctype="multipart/form-data" method="post" action="file_upload_script.php">
+                                <td>Article Image:</td><td><input name="art_file2" type="file" Value="<?php echo $art_file2 ?>" /></td>
+                                <td><input type="submit" value="Upload It" /></td>
+                                </form>
+                                </tr>
                                 <tr>
                                 <td>Article Title:</td><td><input type="text" name="art_name3" value="<?php echo $art_name3 ?>" size="85"></td>
                                 <td>Sort Order:</td><td><input type="text" name="an3_sort" value="<?php echo $an3_sort ?>" size="2"></td>
@@ -195,7 +205,12 @@ include('../includes/db.php');
                                 <tr>
                                 <td>Article Content:</td><td><textarea name="art_text3" cols="70" rows="15" Value="<?php echo $art_text3 ?>"><?php echo $art_text3 ?></textarea></td>
                                 </tr>
-
+                                <tr>
+                                <form enctype="multipart/form-data" method="post" action="file_upload_script.php">
+                                <td>Article Image:</td><td><input name="art_file3" type="file" Value="<?php echo $art_file3 ?>" /></td>
+                                <td><input type="submit" value="Upload It" /></td>
+                                </form>
+                                </tr>
                                 <tr>
                                 <td>Article Title:</td><td><input type="text" name="art_name4" value="<?php echo $art_name4 ?>" size="85"></td>
                                 <td>Sort Order:</td><td><input type="text" name="an4_sort" value="<?php echo $an4_sort ?>" size="2"></td>
@@ -203,7 +218,12 @@ include('../includes/db.php');
                                 <tr>
                                 <td>Article Content:</td><td><textarea name="art_text4" cols="70" rows="15" Value="<?php echo $art_text4 ?>"><?php echo $art_text4 ?></textarea></td>
                                 </tr>
-
+                                <tr>
+                                <form enctype="multipart/form-data" method="post" action="file_upload_script.php">
+                                <td>Article Image:</td><td><input name="art_file4" type="file" Value="<?php echo $art_file4 ?>" /></td>
+                                <td><input type="submit" value="Upload It" /></td>
+                                </form>
+                                </tr>
                                 <tr>
                                 <td>Article Title:</td><td><input type="text" name="art_name5" value="<?php echo $art_name5 ?>" size="85"></td>
                                 <td>Sort Order:</td><td><input type="text" name="an5_sort" value="<?php echo $an5_sort ?>" size="2"></td>
@@ -211,7 +231,12 @@ include('../includes/db.php');
                                 <tr>
                                 <td>Article Content:</td><td><textarea name="art_text5" cols="70" rows="15" Value="<?php echo $art_text5 ?>"><?php echo $art_text5 ?></textarea></td>
                                 </tr>
-
+                                <tr>
+                                <form enctype="multipart/form-data" method="post" action="file_upload_script.php">
+                                <td>Article Image:</td><td><input name="art_file5" type="file" Value="<?php echo $art_file5 ?>" /></td>
+                                <td><input type="submit" value="Upload It" /></td>
+                                </form>
+                                </tr>
                                 <tr>
                                 <td colspan="2">
                                 <input type="submit" name="register" value="Add" class="button"/>&nbsp;
