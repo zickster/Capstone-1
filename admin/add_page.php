@@ -24,61 +24,71 @@ include('../includes/db.php');
 
                 $p_title = mysqli_real_escape_string($db, strip_tags( $_POST['p_title']));
                 $p_sort = mysqli_real_escape_string($db, strip_tags( $_POST['p_sort']));
-                $art_p_title1 = mysqli_real_escape_string($db, strip_tags( $_POST['art_p_title1']));
-                $an1_sort =  mysqli_real_escape_string($db, strip_tags( $_POST['an1_sort']));
+                $art_name1 = mysqli_real_escape_string($db, strip_tags( $_POST['art_name1']));
+                $an_sort1 =  mysqli_real_escape_string($db, strip_tags( $_POST['an1_sort']));
                 $art_text1 = mysqli_real_escape_string($db, strip_tags( $_POST['art_text1']));
                 $art_file1 = mysqli_real_escape_string($db, strip_tags( $_POST['art_file1']));
-                $art_p_title2 = mysqli_real_escape_string($db, strip_tags( $_POST['art_p_title2']));
-                $an2_sort = mysqli_real_escape_string($db, strip_tags( $_POST['an2_sort']));
+                $art_name2 = mysqli_real_escape_string($db, strip_tags( $_POST['art_name2']));
+                $an_sort2 = mysqli_real_escape_string($db, strip_tags( $_POST['an2_sort']));
                 $art_text2 = mysqli_real_escape_string($db, strip_tags( $_POST['art_text2']));
                 $art_file2 = mysqli_real_escape_string($db, strip_tags( $_POST['art_file2']));
-                $art_p_title3 = mysqli_real_escape_string($db, strip_tags( $_POST['art_p_title3']));
-                $os_art_p_title3 = mysqli_real_escape_string($db, strip_tags( $_POST['os_art_p_title3']));
-                $an3_sort = mysqli_real_escape_string($db, strip_tags( $_POST['an3_sort']));
+                $art_name3 = mysqli_real_escape_string($db, strip_tags( $_POST['art_name3']));
+                $os_art_name3 = mysqli_real_escape_string($db, strip_tags( $_POST['os_art_name3']));
+                $an_sort3 = mysqli_real_escape_string($db, strip_tags( $_POST['an3_sort']));
                 $art_text3 = mysqli_real_escape_string($db, strip_tags( $_POST['art_text3']));
                 $art_file3 =  mysqli_real_escape_string($db, strip_tags( $_POST['art_file3']));
-                $art_p_title4 = mysqli_real_escape_string($db, strip_tags( $_POST['art_p_title4']));
-                $an4_sort = mysqli_real_escape_string($db, strip_tags( $_POST['an4_sort']));
+                $art_name4 = mysqli_real_escape_string($db, strip_tags( $_POST['art_name4']));
+                $an_sort4 = mysqli_real_escape_string($db, strip_tags( $_POST['an4_sort']));
                 $art_text4 = mysqli_real_escape_string($db, strip_tags( $_POST['art_text4']));
                 $art_file4 = mysqli_real_escape_string($db, strip_tags( $_POST['art_file4']));
-                $art_p_title5 = mysqli_real_escape_string($db, strip_tags( $_POST['art_p_title5']));
-                $an5_sort = mysqli_real_escape_string($db, strip_tags( $_POST['an5_sort']));
-				$art_text5 = mysqli_real_escape_string($db, strip_tags( $_POST['art_text5']));
-				$art_file5 = mysqli_real_escape_string($db, strip_tags( $_POST['art_file5']));
+                $art_name5 = mysqli_real_escape_string($db, strip_tags( $_POST['art_name5']));
+                $an_sort5 = mysqli_real_escape_string($db, strip_tags( $_POST['an5_sort']));
+		$art_text5 = mysqli_real_escape_string($db, strip_tags( $_POST['art_text5']));
+		$art_file5 = mysqli_real_escape_string($db, strip_tags( $_POST['art_file5']));
+
+
+//Check that no page esists with this title
+$tresults = mysqli_query($db, "SELECT p_title FROM tbl_pages WHERE p_title='$p_title'");
+	$trow = mysqli_fetch_array($tresults);
+	$title_test=$trow['p_title'];
+	if(!empty($title_test)){
+                $ttl_error="A page with this title already exists.";
+               	$c++;
+	}
 
 //Null variables
-				$ttl_error=" ";
-				$ps_error=" ";
-				$an1_error=" ";
-				$at1_error=" ";
-				$ans1_error=" ";
+		$ttl_error=" ";
+		$ps_error=" ";
+		$an1_error=" ";
+		$at1_error=" ";
+		$ans1_error=" ";
 		
 //Check if entered cata is not empty
 	if (empty($p_title)){
                 $ttl_error="Page title cannot be empty.";
 				$c++;
-	}elseif(empty($p_sort)){
+	}elseif(empty($p_sort) && $p_sort !== '0'){
 				$ps_error="Sort order cannot be empty.";
 				$c++;
-	}elseif(empty($art_p_title1)){
+	}elseif(empty($art_name1)){
                 $an1_error="There must be at least one article on each page.";
 				$c++;
-    }elseif(empty($art_text1)){
+    	}elseif(empty($art_text1)){
                 $at1_error="There must be text for this article.";
 				$c++;
-    }elseif(empty($an1_sort)){
+    	}elseif(empty($an_sort1) && $an_sort1 !== '0'){
                 $ans1_error="Sort order cannot be empty.";
 				$c++;
-	}elseif(!empty($art_name2) && empty($an2_sort)){
+	}elseif(!empty($art_name2) && empty($an_sort2) && $an_sort2 !== '0'){
                 $ans2_error="Sort order cannot be empty.";
 				$c++;
-	}elseif(!empty($art_name3) && empty($an3_sort)){
+	}elseif(!empty($art_name3) && empty($an_sort3) && $an_sort3 !== '0'){
                 $ans3_error="Sort order cannot be empty.";
 				$c++;
-	}elseif(!empty($art_name4) && empty($an4_sort)){
+	}elseif(!empty($art_name4) && empty($an_sort4) && $an_sort4 !== '0'){
                 $ans4_error="Sort order cannot be empty.";
 				$c++;
-	}elseif(!empty($art_name5) && empty($an5_sort)){
+	}elseif(!empty($art_name5) && empty($an_sort5) && $an_sort5 !== '0'){
                 $ans5_error="Sort order cannot be empty.";
 				$c++;			
 	}elseif(!empty($art_name2) && empty($art_text2)){
@@ -96,10 +106,16 @@ include('../includes/db.php');
 //If valid insert data
         }else{ if($c==0){
 //Enter valid data into DB
-		mysqli_query($db, "INSERT INTO institutions (name, s_address, s_address2, city, state, zip, phone, population, gpa_summer_mid, gpa_fall_mid, sat_summer_mid, sat_fall_mid, act_summer_mid, act_fall_mid, mascot, ap_credits, app_deadline, link) 
-					      VALUES ('$name', '$add1', '$add2', '$city', '$state', '$zip', '$phone', '$pop', '$gpa_summer_mid', '$gpa_fall_mid', '$sat_summer_mid', '$sat_fall_mid', '$act_summer_mid', '$act_fall_mid', '$mascot', '$ap_credits', '$app_deadline', '$link')");
-		mysqli_query($db, "INSERT INTO cost (institution, hour, books, housing, nr_hour) 
-					      VALUES ('$name', '$cost', '$books', '$rb', '$os_cost')");
+	mysqli_query($db, "INSERT INTO tbl_pages (p_title, p_sort) VALUES ('$p_title', '$p_sort')");
+
+$stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title'");
+        $srow = mysqli_fetch_array($sresults);
+        $page_id=$srow['id'];
+	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id) VALUES ('$art_name1', '$art_text1', '$art_file1', '$an_sort1', '$page_id')");
+	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id) VALUES ('$art_name2', '$art_text2', '$art_file2', '$an_sort2', '$page_id')");
+	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id) VALUES ('$art_name3', '$art_text3', '$art_file3', '$an_sort3', '$page_id')");
+	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id) VALUES ('$art_name4', '$art_text4', '$art_file4', '$an_sort4', '$page_id')");
+	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id) VALUES ('$art_name5', '$art_text5', '$art_file5', '$an_sort5', '$page_id')");
                	mysqli_close($db);
                         header('Location: index.php');
 	}
@@ -137,20 +153,20 @@ include('../includes/db.php');
 
                                 <tr>
                                 <td>Article Title:</td><td><input type="text" name="art_name1" value="<?php echo $art_name1 ?>" size="85"><span class="red"><?php echo $an1_error ?></span></td>
-                                <td>Sort Order:</td><td><input type="text" name="an1_sort" value="<?php echo $an1_sort ?>" size="2"><span class="red"><?php echo $ans1_error ?></span></td>
+                                <td>Sort Order:</td><td><input type="text" name="an1_sort" value="<?php echo $an_sort1 ?>" size="2"><span class="red"><?php echo $ans1_error ?></span></td>
                                 </tr>
                                 <tr>
-								<td>Article Content:</td><td><textarea name="art_text1" cols="70" rows="15" Value="<?php echo $art_text1 ?>"><?php echo $art_text1 ?></textarea><span class="red"><?php echo $at1_error ?></span></td>
-								</tr>
-								<tr>
-								<form enctype="multipart/form-data" method="post" action="file_upload_script.php">
-								<td>Article Image:</td><td><input name="art_file1" type="file" Value="<?php echo $art_file1 ?>" /></td>
-								<td><input type="submit" value="Upload It" /></td>
-								</form>
-								</tr>
+				<td>Article Content:</td><td><textarea name="art_text1" cols="70" rows="15" Value="<?php echo $art_text1 ?>"><?php echo $art_text1 ?></textarea><span class="red"><?php echo $at1_error ?></span></td>
+				</tr>
+				<tr>
+				<form enctype="multipart/form-data" method="post" action="file_upload_script.php">
+				<td>Article Image:</td><td><input name="art_file1" type="file" Value="<?php echo $art_file1 ?>" /></td>
+				<td><input type="submit" value="Upload It" /></td>
+				</form>
+				</tr>
                                 <tr>
                                 <td>Article Title:</td><td><input type="text" name="art_name2" value="<?php echo $art_name2 ?>" size="85"></td>
-                                <td>Sort Order:</td><td><input type="text" name="an2_sort" value="<?php echo $an2_sort ?>" size="2"><span class="red"><?php echo $ans2_error ?></span></td>
+                                <td>Sort Order:</td><td><input type="text" name="an2_sort" value="<?php echo $an_sort2 ?>" size="2"><span class="red"><?php echo $ans2_error ?></span></td>
                                 </tr>
                                 <tr>
                                 <td>Article Content:</td><td><textarea name="art_text2" cols="70" rows="15" Value="<?php echo $art_text2 ?>"><?php echo $art_text2 ?></textarea></td>
@@ -163,7 +179,7 @@ include('../includes/db.php');
                                 </tr>
                                 <tr>
                                 <td>Article Title:</td><td><input type="text" name="art_name3" value="<?php echo $art_name3 ?>" size="85"></td>
-                                <td>Sort Order:</td><td><input type="text" name="an3_sort" value="<?php echo $an3_sort ?>" size="2"><span class="red"><?php echo $ans3_error ?></span></td>
+                                <td>Sort Order:</td><td><input type="text" name="an3_sort" value="<?php echo $an_sort3 ?>" size="2"><span class="red"><?php echo $ans3_error ?></span></td>
                                 </tr>
                                 <tr>
                                 <td>Article Content:</td><td><textarea name="art_text3" cols="70" rows="15" Value="<?php echo $art_text3 ?>"><?php echo $art_text3 ?></textarea></td>
@@ -176,7 +192,7 @@ include('../includes/db.php');
                                 </tr>
                                 <tr>
                                 <td>Article Title:</td><td><input type="text" name="art_name4" value="<?php echo $art_name4 ?>" size="85"></td>
-                                <td>Sort Order:</td><td><input type="text" name="an4_sort" value="<?php echo $an4_sort ?>" size="2"><span class="red"><?php echo $ans4_error ?></span></td>
+                                <td>Sort Order:</td><td><input type="text" name="an4_sort" value="<?php echo $an_sort4 ?>" size="2"><span class="red"><?php echo $ans4_error ?></span></td>
                                 </tr>
                                 <tr>
                                 <td>Article Content:</td><td><textarea name="art_text4" cols="70" rows="15" Value="<?php echo $art_text4 ?>"><?php echo $art_text4 ?></textarea></td>
@@ -189,7 +205,7 @@ include('../includes/db.php');
                                 </tr>
                                 <tr>
                                 <td>Article Title:</td><td><input type="text" name="art_name5" value="<?php echo $art_name5 ?>" size="85"></td>
-                                <td>Sort Order:</td><td><input type="text" name="an5_sort" value="<?php echo $an5_sort ?>" size="2"><span class="red"><?php echo $ans5_error ?></span></td>
+                                <td>Sort Order:</td><td><input type="text" name="an5_sort" value="<?php echo $an_sort5 ?>" size="2"><span class="red"><?php echo $ans5_error ?></span></td>
                                 </tr>
                                 <tr>
                                 <td>Article Content:</td><td><textarea name="art_text5" cols="70" rows="15" Value="<?php echo $art_text5 ?>"><?php echo $art_text5 ?></textarea></td>
