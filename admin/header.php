@@ -64,7 +64,7 @@ $cresults = mysqli_query($db, "SELECT count(id) FROM tbl_dept WHERE status=1");
                                 $count=$crow['count(id)'];
 
 
-$tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY name LIMIT 0, 5");
+$tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY sort_order");
                                         if( $trow = mysqli_fetch_array($tresults)){
                                                 do{
 ?>
@@ -72,11 +72,7 @@ $tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY na
 <?php
                                                 }while($trow = mysqli_fetch_array($tresults));
                                         }
-                                        if($count>5){
-?>
-                                                <li><a href="more_colleges.php">More Colleges...</a></li>
-<?php
-}
+
 ?>
         </ul> 
       </li> 
