@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="../includes/main.css" rel="stylesheet" type="text/css">
 
-<title>Living Web ToolKit</title>
+<title>Daily Living ToolKit</title>
 <script type="text/javascript">
 function MM_jumpMenu(targ,selObj,restore){ //v3.0
   eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
@@ -13,27 +13,16 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 </script>
 
 <link href="includes/main.css" rel="stylesheet" type="text/css" />
-<!-- <?php
+<?php
 //Create session variables
-// session_start();
-//mport DB credentials
-// include('includes/db.php');
-// ?>
--->
+session_start();
+//Import DB credentials
+include('includes/db.php');
+?>
+
 
 </head>
 <body class = "mainbody">
-
-<div id="main_header_wrapper">
-	<div id="main_header">
-    	
-<!--        <div id="site_title">
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-        </div> <!-- end of site_title -->
-</div>
-
-
 <div class="headercontainer">
 
 <a href="register.php">Sign Up</a>
@@ -45,7 +34,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 	if(!empty($_SESSION['app_username']) && !empty($_SESSION['app_password'])){
 ?>
 <a href="logout.php">Logout</a>&nbsp;
-<p float="left"><?php echo $_SESSION['app_username']; ?> logged in.</p>
+	<p float="left"><?php echo $_SESSION['app_username']; ?> logged in.</p>
 <?php
 }else{
 ?>
@@ -53,46 +42,32 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <?php
 }	
 ?>
-
-<div id="templatemo_header_wrapper">
-	<div id="templatemo_header"><!-- end of site_title -->
-
-  </div> 
-  <div id="wrapper" align="center">
-  
+<div id="wrapper" align="center">
+  <div>
   <div id="divdiv">
-  <table width="804">
-  <tr><td width="138">
+  <table>
+  <tr><td>
     <ul>
-      <li><a href="index.php">Colleges</a>
+      <li><a href="index.php">Departments</a>
         <ul>
 
 <?php
-//Count how many colleges are in the DB
-$cresults = mysqli_query($db, "SELECT count(id) FROM institutions WHERE status=1");
-				$crow = mysqli_fetch_array($cresults);
-				$count=$crow['count(id)'];			
-
 //Retrieve required data from the DB and publish it on the page
-$tresults = mysqli_query($db, "SELECT * FROM institutions WHERE status=1 ORDER BY name LIMIT 0, 5");
+$tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY sort_order");
                                         if( $trow = mysqli_fetch_array($tresults)){
                                                 do{
 ?>
-                                                <li><a href="colleges.php?id=<?php echo $trow['id'] ?>"><?php echo $trow['name'] ?></a></li>
+                                                <li><a href="dept.php?id=<?php echo $trow['id'] ?>"><?php echo $trow['name'] ?></a></li>
 <?php
                                                 }while($trow = mysqli_fetch_array($tresults));
                                         }
-					if($count>5){
-?>
-                                                <li><a href="more_colleges.php">More Colleges...</a></li>
-<?php
-}
+
 ?>
         </ul> 
       </li> 
       </ul>
     </td>
-    <td width="145">
+    <td>
     <ul>
       <li><a href="index.php">Schedule</a>
         <ul>
@@ -110,7 +85,7 @@ $tresults = mysqli_query($db, "SELECT * FROM institutions WHERE status=1 ORDER B
       </li> 
       </ul>
     </td>
-    <td width="200">
+    <td>
     <ul>
       <li><a href="index.php">Finacial Aid</a>
         <ul>
@@ -127,7 +102,7 @@ $tresults = mysqli_query($db, "SELECT * FROM institutions WHERE status=1 ORDER B
       </li> 
       </ul>
     </td>
-    <td width="89">
+    <td>
     <ul>
       <li><a href="index.php">Links</a>
         <ul>
@@ -144,20 +119,25 @@ $tresults = mysqli_query($db, "SELECT * FROM institutions WHERE status=1 ORDER B
       </li> 
       </ul>
     </td>
-    <td width="208">
+    <td>
     <ul>
       <li><a href="index.php" target="_blank">Contact Us</a>
         <ul>
           <li><a href="e-mails.php" >E-mail</a></li>
           <li><a href="bpainformation.php">BPA Information</a></li>
-
+          
+          
+          
+          
+          
+          
         </ul> 
       </li> 
       </ul>
       </td></tr></table>
     </div>
     </div>
-  </div>
-</div>
+    </div>
+</div>    
 </body>
 </html>

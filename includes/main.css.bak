@@ -1,25 +1,17 @@
+
   
 body.mainbody {
-	/*background-color: #E6DC97; */
-	/* Copied from Example.html */
-	background-color: #082a2e;
-	background-image: url(../images/header_body.jpg);
-	background-repeat: repeat-x;
-	background-position: top;
-	
+	background-color: #E6DC97;
 }
-
-
-
 .headercontainer {
-	/* background-color: #E6DC97; */ 
+	background-color: #E6DC97;
 	padding-bottom:40px;
 	margin-bottom:40px;
 	width: 85%;
 	margin:0px auto;
 }
 .container
-{   /* background-color:#FFF; */
+{ background-color:#FFF;
 margin:0px auto;
 width: 85%;
 padding-bottom:20px;
@@ -27,43 +19,30 @@ padding-top:20px;
 //margin-top:40px;
 }
   
-
-
 #divdiv {
-	/* background-color: #A5B461; */
-	height: -10px;
-	/* width: 1032px; */
-	width: 93.8%; 
-	background-color: #f1f30a;
-	/* margin: 25px; */
-	}
+	background-color: #A5B461;
+	width: 1032px;
+	margin: 20px;
+}
 #divdiv ul {
 	margin: 0px;
 	padding: 0px;
 	list-style-type: none;
-	
-	
-
 }
 
 #divdiv ul li {
 	//float: left;
 	position: relative;
-	
-	
 }
 .table1 {
 	border-collapse: collapse;
-	
 }
 
 #divdiv ul li a {
-	line-height: 20px;
-	/*background-color: #A5B461; */
-	background-color: #f1f30a; 
-
-	width: 175px;
-	
+	line-height: 30px;
+	background-color: #A5B461;
+	height: 30px;
+	width: 200px;
 	border-top-width: 1px;
 	border-right-width: 1px;
 	border-bottom-width: 1px;
@@ -80,8 +59,6 @@ padding-top:20px;
 	display: block;
 	color: #000;
 	text-decoration: none;
-	
-	
 }
 #divdiv ul li:hover ul li {
 	visibility: visible;
@@ -95,7 +72,7 @@ padding-top:20px;
 }
 #divdiv ul li ul {
 	position: absolute;
-	
+	top: 31px;
 	visibility: hidden;
 }
 #divdiv ul li ul li a {
@@ -105,31 +82,10 @@ padding-top:20px;
 	margin-right: auto;
 	margin-left: auto;
 }
-/* CSS code for HEADER.php   */
-#templatemo_header_wrapper { 
-	width: 100%;
-	height: 120%;
-	background: url(../images/header_header.jpg) no-repeat top center;
-}
-
-/* CSS code for HEADER.php   */
-#templatemo_header {
-	width: 910px;
-	height: 120px;
-	padding: 0 30px;
-	margin: 0 auto;
-	/* background: url(../images/header_header.jpg) no-repeat top center; */
-}
-
-
 a {
-	/* color: #000; */
-	color:#FFF
+	color: #000;
 	text-decoration: underline;
 }
-
-
-
 .table1 td {
 	width: 30%;
 }
