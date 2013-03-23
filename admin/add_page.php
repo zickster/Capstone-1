@@ -139,10 +139,18 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
         $srow = mysqli_fetch_array($sresults);
         $page_id=$srow['id'];
 	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id, status) VALUES ('$art_name1', '$art_text1', '$art_file1', '$an_sort1', '$page_id', '$a_activate1')");
+	if(!empty($art_name2)){
 	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id, status) VALUES ('$art_name2', '$art_text2', '$art_file2', '$an_sort2', '$page_id', '$a_activate2')");
+	}
+	if(!empty($art_name3)){
 	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id, status) VALUES ('$art_name3', '$art_text3', '$art_file3', '$an_sort3', '$page_id', '$a_activate3')");
+	}
+	if(!empty($art_name4)){
 	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id, status) VALUES ('$art_name4', '$art_text4', '$art_file4', '$an_sort4', '$page_id', '$a_activate4')");
+	}
+	if(!empty($art_name5)){
 	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id, status) VALUES ('$art_name5', '$art_text5', '$art_file5', '$an_sort5', '$page_id', '$a_activate5')");
+	}
                	mysqli_close($db);
                         header('Location: index.php');
 	}
@@ -205,7 +213,7 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
                                 </tr>
 				<tr>
 				<td></td>
-				<!--td><input type="checkbox" name="p_activate" value="1">Make Page Active.</td-->
+				<td><input type="checkbox" name="p_activate" value="1">Make Page Active.</td>
 				</tr>
                                 <tr>
                                 <td>Article Title:</td><td><input type="text" name="art_name1" value="<?php echo $art_name1 ?>" size="85"><span class="red"><?php echo $an1_error ?></span></td>
@@ -213,7 +221,7 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
                                 </tr>
                                 <tr>
                                 <td></td>
-                                <!--td><input type="checkbox" name="a_activate1" value="1">Make Article Active.</td-->
+                                <td><input type="checkbox" name="a_activate1" value="1">Make Article Active.</td>
                                 </tr>
                                 <tr>
                                 <tr>
@@ -231,7 +239,7 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
                                 </tr>
                                 <tr>
                                 <td></td>
-                                <!--td><input type="checkbox" name="a_activate2" value="1">Make Article Active.</td-->
+                                <td><input type="checkbox" name="a_activate2" value="1">Make Article Active.</td>
                                 </tr>
                                 <tr>
                                 <tr>
@@ -249,7 +257,7 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
                                 </tr>
                                 <tr>
                                 <td></td>
-                                <!--td><input type="checkbox" name="a_activate3" value="1">Make Article Active.</td-->
+                                <td><input type="checkbox" name="a_activate3" value="1">Make Article Active.</td>
                                 </tr>
                                 <tr>
                                 <tr>
@@ -267,7 +275,7 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
                                 </tr>
                                 <tr>
                                 <td></td>
-                                <!--td><input type="checkbox" name="a_activate4" value="1">Make Article Active.</td-->
+                                <td><input type="checkbox" name="a_activate4" value="1">Make Article Active.</td>
                                 </tr>
                                 <tr>
                                 <tr>
@@ -285,7 +293,7 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
                                 </tr>
                                 <tr>
                                 <td></td>
-                                <!--td><input type="checkbox" name="a_activate5" value="1">Make Article Active.</td-->
+                                <td><input type="checkbox" name="a_activate5" value="1">Make Article Active.</td>
                                 </tr>
                                 <tr>
                                 <tr>
