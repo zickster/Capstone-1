@@ -14,7 +14,7 @@ include('../includes/db.php');
                 $name = mysqli_real_escape_string($db, strip_tags( $_POST['name']));
                 $id = mysqli_real_escape_string($db, strip_tags( $_POST['id']));
 //Refer to correct page for edit
-                        header('Location: choose_page.php?id='.$id);
+                        header('Location: select_page.php?id='.$id);
                         exit();
                 }    
         if($_POST['delete']){
@@ -45,7 +45,7 @@ include('../includes/db.php');
 
         <table border="1" class="table1">
                 <tr>
-                        <th><h2>Choose a Catagory</h2></th>
+                        <th><h2>Select a Catagory</h2></th>
                 </tr>
                 <tr>
                 <td>

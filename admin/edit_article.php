@@ -9,14 +9,15 @@ include('../includes/db.php');
         require('header.php');
 
 //added php-mysql security
-        $dept_id = mysqli_real_escape_string($db, strip_tags($_GET['id']));
+        $article_id = mysqli_real_escape_string($db, strip_tags($_GET['id']));
 
-        if($_POST['edit']){
+        if($_POST['delete']){
 //Added sql security to prevent sql injection
-                $name = mysqli_real_escape_string($db, strip_tags( $_POST['name']));
                 $id = mysqli_real_escape_string($db, strip_tags( $_POST['id']));
+                $page_id = mysqli_real_escape_string($db, strip_tags( $_POST['page_id']));
+$dresults = mysqli_query($db, "DELETE FROM tbl_articles WHERE id='$id'");
 //Refer to correct page for edit
-                        header('Location: edit_article.php?id='.$id);
+                        header('Location: chose_article.php?id='.$page_id);
                         exit();
                 }    
 
@@ -25,9 +26,9 @@ include('../includes/db.php');
                 $id = mysqli_real_escape_string($db, strip_tags( $_POST['id']));
                 $name = mysqli_real_escape_string($db, strip_tags( $_POST['name']));
 //Set status to 1 if activating
-                mysqli_query($db, "UPDATE tbl_pages SET status='1' WHERE id='$id'");
+                mysqli_query($db, "UPDATE tbl_articles SET status='1' WHERE id='$id'");
                 mysqli_close($db);
-                        header('Location: edit_page.php?id='.$dept_id);
+                        header('Location: edit_article.php?id='.$id);
                         exit();
                 }    
 
@@ -36,9 +37,9 @@ include('../includes/db.php');
                 $id = mysqli_real_escape_string($db, strip_tags( $_POST['id']));
                 $name = mysqli_real_escape_string($db, strip_tags( $_POST['name']));
 //Set status to 0 if deactivating
-                mysqli_query($db, "UPDATE tbl_pages SET status='0' WHERE id='$id'");
+                mysqli_query($db, "UPDATE tbl_articles SET status='0' WHERE id='$id'");
                 mysqli_close($db);
-                        header('Location: edit_page.php?id='.$dept_id);
+                        header('Location: edit_article.php?id='.$id);
                         exit();
                 }    
 
@@ -61,46 +62,51 @@ include('../includes/db.php');
 
         <table border="1" class="table1">
                 <tr>
-                        <th><h2>Edit a Web Page</h2></th>
+                        <th><h2>Edit an Article</h2></th>
                 </tr>
                 <tr>
                 <td>
                 <table>
 				<tr>
 				<th>Page Name</th>
+				<th>Content</th>
 				<th>Status</th>
 				<th>Sort Order</th>
 				</tr>
 <?php
 //Retrieve required information from DB and display on page
-			$tresults = mysqli_query($db, "SELECT * FROM tbl_pages WHERE dept_id='$dept_id' ORDER BY p_sort");
+			$tresults = mysqli_query($db, "SELECT * FROM tbl_articles WHERE id='$article_id'");
                                         if( $trow = mysqli_fetch_array($tresults)){
                                                 do{
-						$name=$trow['p_title'];
-						$status=$trow['status'];
-						$p_sort=$trow['p_sort'];
+						$name=$trow['art_name'];
 						$id=$trow['id'];
+						$sort=$trow['an_sort'];
+						$status=$trow['status'];
+						$art_text=$trow['art_text'];
+						$page_id=$trow['page_id'];
 ?>
 				<form name="edit" method="post" action="<?php basename($PHP_SELF)?>">
                                 <tr>
 				<td><?php echo $name ?></td>
-				<td>
-				<?php 
-					switch($status){
-					case "0":
-						$status="Inactive";
-						break;
-					case "1":
-						$status="Active";
-						break;
-					default:
-						$status="Unknown";
-				}
-				echo $status ?>
-				</td>
-				<td><?php echo $p_sort ?></td>
+				<td><?php echo $art_text ?></td>
+                                <td>
+                                <?php
+                                        switch($status){
+                                        case "0":
+                                                $status="Inactive";
+                                                break;
+                                        case "1":
+                                                $status="Active";
+                                                break;
+                                        default:
+                                                $status="Unknown";
+                                }
+                                echo $status ?>
+                                </td>
+				<td><?php echo $sort ?></td>
+				<td><input type="hidden" name="page_id" value="<?php echo $page_id ?>">
 				<td><input type="hidden" name="id" value="<?php echo $id ?>">
-				<input type="submit" name="edit" value="Edit" class="button"/></td>
+				<input type="submit" name="delete" value="delete" class="button"/></td>
 				<td><input type="submit" name="deactivate" value="Deactivate" class="button"/></td>
 				<td><input type="submit" name="activate" value="Activate" class="button"/></td>
                                 </tr>

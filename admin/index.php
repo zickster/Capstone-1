@@ -25,7 +25,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <div class="container ">
 
            <a href="add_page.php">Add A Web Page</a><br /> 
-           <a href="choose_catagory.php">Edit A Web Page</a><br /> 
+           <a href="select_catagory.php">Edit A Web Page</a><br /> 
            <a href="register.php">Add Account</a><br /> 
            <a href="list_account.php">Edit Accounts</a><br /> 
 	   <a href="reports.php">Search Historical Data</a><br />
