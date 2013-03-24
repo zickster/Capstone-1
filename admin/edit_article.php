@@ -43,6 +43,37 @@ $dresults = mysqli_query($db, "DELETE FROM tbl_articles WHERE id='$id'");
                         exit();
                 }    
 
+        if($_POST['decrease']){
+//Added sql security to prevent sql injection
+                $id = mysqli_real_escape_string($db, strip_tags( $_POST['id']));
+                $sort = mysqli_real_escape_string($db, strip_tags( $_POST['sort']));
+		$new_sort=$sort-1;
+//Set order down 1
+                mysqli_query($db, "UPDATE tbl_articles SET an_sort='$new_sort' WHERE id='$id'");
+                mysqli_close($db);
+                        header('Location: edit_article.php?id='.$id);
+                        exit();
+                }    
+
+        if($_POST['increase']){
+//Added sql security to prevent sql injection
+                $id = mysqli_real_escape_string($db, strip_tags( $_POST['id']));
+                $sort = mysqli_real_escape_string($db, strip_tags( $_POST['sort']));
+                $new_sort=$sort+1;
+//Set order down 1
+                mysqli_query($db, "UPDATE tbl_articles SET an_sort='$new_sort' WHERE id='$id'");
+                mysqli_close($db);
+                        header('Location: edit_article.php?id='.$id);
+                        exit();
+                }
+
+        if($_POST['edit']){
+//Added sql security to prevent sql injection
+                $id = mysqli_real_escape_string($db, strip_tags( $_POST['id']));
+                        header('Location: edit_article_text.php?id='.$id);
+                        exit();
+                }
+
 //return to home page
         if($_POST['exit']){
                         header('Location: index.php');
@@ -70,6 +101,7 @@ $dresults = mysqli_query($db, "DELETE FROM tbl_articles WHERE id='$id'");
 				<tr>
 				<th>Page Name</th>
 				<th>Content</th>
+				<th></th>
 				<th>Status</th>
 				<th>Sort Order</th>
 				</tr>
@@ -88,7 +120,7 @@ $dresults = mysqli_query($db, "DELETE FROM tbl_articles WHERE id='$id'");
 				<form name="edit" method="post" action="<?php basename($PHP_SELF)?>">
                                 <tr>
 				<td><?php echo $name ?></td>
-				<td><?php echo $art_text ?></td>
+				<td><?php echo $art_text ?></td><td><input type="submit" name="edit" value="Edit" class="button"/></td>
                                 <td>
                                 <?php
                                         switch($status){
@@ -103,12 +135,25 @@ $dresults = mysqli_query($db, "DELETE FROM tbl_articles WHERE id='$id'");
                                 }
                                 echo $status ?>
                                 </td>
-				<td><?php echo $sort ?></td>
-				<td><input type="hidden" name="page_id" value="<?php echo $page_id ?>">
-				<td><input type="hidden" name="id" value="<?php echo $id ?>">
-				<input type="submit" name="delete" value="delete" class="button"/></td>
+				<td><input type="submit" name="increase" value="Up" class="button"/><br />
+				<?php echo $sort ?><br />
+				<input type="submit" name="decrease" value="Down" class="button"/></td>
+				<td><input type="hidden" name="page_id" value="<?php echo $page_id ?>"></td>
+				<td><input type="hidden" name="sort" value="<?php echo $sort ?>"></td>
+				<td><input type="hidden" name="id" value="<?php echo $id ?>"></td>
+<?php				
+		if($status=="Active"){
+?>
 				<td><input type="submit" name="deactivate" value="Deactivate" class="button"/></td>
+<?php
+		}
+		if($status=="Inactive"){
+?>
 				<td><input type="submit" name="activate" value="Activate" class="button"/></td>
+<?php
+		}
+?>
+				<td><input type="submit" name="delete" value="delete" class="button"/></td>
                                 </tr>
 				</form>
 <?php
