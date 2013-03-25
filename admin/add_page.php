@@ -135,9 +135,10 @@ $tresults = mysqli_query($db, "SELECT p_title FROM tbl_pages WHERE p_title='$p_t
 //Enter valid data into DB
 	mysqli_query($db, "INSERT INTO tbl_pages (p_title, p_sort, dept_id, status) VALUES ('$p_title', '$p_sort', '$dept_id', '$p_activate')");
 
-$stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title'");
+$sresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title'");
         $srow = mysqli_fetch_array($sresults);
         $page_id=$srow['id'];
+	if(!empty($page_id)){
 	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id, status) VALUES ('$art_name1', '$art_text1', '$art_file1', '$an_sort1', '$page_id', '$a_activate1')");
 	if(!empty($art_name2)){
 	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id, status) VALUES ('$art_name2', '$art_text2', '$art_file2', '$an_sort2', '$page_id', '$a_activate2')");
@@ -151,8 +152,14 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
 	if(!empty($art_name5)){
 	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_file, an_sort, page_id, status) VALUES ('$art_name5', '$art_text5', '$art_file5', '$an_sort5', '$page_id', '$a_activate5')");
 	}
+	
                	mysqli_close($db);
                         header('Location: index.php');
+	}else{
+                mysqli_close($db);
+                        header('Location: add_page.php');
+
+	}
 	}
 	}
         }
@@ -229,8 +236,8 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
 				</tr>
 				<tr>
 				<form enctype="multipart/form-data" method="post" action="file_upload_script.php">
-				<td>Article Image:</td><td><input name="art_file1" type="file" Value="<?php echo $art_file1 ?>" /></td>
-				<td><input type="submit" value="Upload It" /></td>
+				<!--td>Article Image:</td><td><input name="art_file1" type="file" Value="<?php echo $art_file1 ?>" /></td>
+				<td><input type="submit" value="Upload It" /></td-->
 				</form>
 				</tr>
                                 <tr>
@@ -247,8 +254,8 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
                                 </tr>
                                 <tr>
                                 <form enctype="multipart/form-data" method="post" action="file_upload_script.php">
-                                <td>Article Image:</td><td><input name="art_file2" type="file" Value="<?php echo $art_file2 ?>" /></td>
-                                <td><input type="submit" value="Upload It" /></td>
+                                <!--td>Article Image:</td><td><input name="art_file2" type="file" Value="<?php echo $art_file2 ?>" /></td>
+                                <td><input type="submit" value="Upload It" /></td-->
                                 </form>
                                 </tr>
                                 <tr>
@@ -265,8 +272,8 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
                                 </tr>
                                 <tr>
                                 <form enctype="multipart/form-data" method="post" action="file_upload_script.php">
-                                <td>Article Image:</td><td><input name="art_file3" type="file" Value="<?php echo $art_file3 ?>" /></td>
-                                <td><input type="submit" value="Upload It" /></td>
+                                <!--td>Article Image:</td><td><input name="art_file3" type="file" Value="<?php echo $art_file3 ?>" /></td>
+                                <td><input type="submit" value="Upload It" /></td-->
                                 </form>
                                 </tr>
                                 <tr>
@@ -283,8 +290,8 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
                                 </tr>
                                 <tr>
                                 <form enctype="multipart/form-data" method="post" action="file_upload_script.php">
-                                <td>Article Image:</td><td><input name="art_file4" type="file" Value="<?php echo $art_file4 ?>" /></td>
-                                <td><input type="submit" value="Upload It" /></td>
+                                <!--td>Article Image:</td><td><input name="art_file4" type="file" Value="<?php echo $art_file4 ?>" /></td>
+                                <td><input type="submit" value="Upload It" /></td-->
                                 </form>
                                 </tr>
                                 <tr>
@@ -301,8 +308,8 @@ $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title
                                 </tr>
                                 <tr>
                                 <form enctype="multipart/form-data" method="post" action="file_upload_script.php">
-                                <td>Article Image:</td><td><input name="art_file5" type="file" Value="<?php echo $art_file5 ?>" /></td>
-                                <td><input type="submit" value="Upload It" /></td>
+                                <!--td>Article Image:</td><td><input name="art_file5" type="file" Value="<?php echo $art_file5 ?>" /></td>
+                                <td><input type="submit" value="Upload It" /></td-->
                                 </form>
                                 </tr>
                                 <tr>

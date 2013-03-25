@@ -74,6 +74,15 @@ $dresults = mysqli_query($db, "DELETE FROM tbl_articles WHERE id='$id'");
                         exit();
                 }
 
+//back to previous page
+        if($_POST['back']){
+                 $sresults = mysqli_query($db, "SELECT page_id FROM tbl_articles WHERE id='$article_id'");
+                        $srow = mysqli_fetch_array($sresults);
+                        $page_id=$srow['page_id'];
+                        header('Location: select_article.php?id='.$page_id);
+                        exit();
+                }
+
 //return to home page
         if($_POST['exit']){
                         header('Location: index.php');
@@ -162,7 +171,8 @@ $dresults = mysqli_query($db, "DELETE FROM tbl_articles WHERE id='$id'");
 ?>
 				<form name="edit" method="post" action="<?php basename($PHP_SELF)?>">
 				<tr>
-				<td><input type="submit" name="exit" value="Exit" class="button"/></td>
+				<td><input type="submit" name="back" value="Back" class="button"/>
+				<input type="submit" name="exit" value="Exit" class="button"/></td>
 				</tr>
 				</form>
 

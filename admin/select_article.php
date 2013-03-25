@@ -49,6 +49,15 @@ include('../includes/db.php');
                         exit();
                 }    
 
+//go back one page
+        if($_POST['back']){
+		 $sresults = mysqli_query($db, "SELECT dept_id FROM tbl_pages WHERE id='$page_id'");
+			$srow = mysqli_fetch_array($sresults);
+			$dept_id=$srow['dept_id'];
+                        header('Location: select_page.php?id='.$dept_id);
+                        exit();
+                }
+
 //return to home page
         if($_POST['exit']){
                         header('Location: index.php');
@@ -118,6 +127,7 @@ include('../includes/db.php');
 				<form name="edit" method="post" action="<?php basename($PHP_SELF)?>">
 				<tr>
 				<tr>
+				<td><input type="submit" name="back" value="Back" class="button"/>
 				<td><input type="submit" name="exit" value="Exit" class="button"/>
 				<input type="submit" name="add" value="Add Article" class="button"/></td>
 				</tr>

@@ -24,11 +24,17 @@ include('../includes/db.php');
                 }
 
 //return to home page
-        if($_POST['exit']){
+        if($_POST['back']){
                 $id = mysqli_real_escape_string($db, strip_tags( $_POST['id']));
                         header('Location: edit_article.php?id='.$id);
                         exit();
                 }
+//return to home page
+        if($_POST['exit']){
+                        header('Location: index.php');
+                        exit();
+                }
+
 ?>
 <html>
 <head>
@@ -70,7 +76,8 @@ include('../includes/db.php');
 				<td><input type="hidden" name="page_id" value="<?php echo $page_id ?>"></td>
 				<td><input type="hidden" name="id" value="<?php echo $id ?>"></td>
                                 </tr>
-				<tr><td><input type="submit" name="exit" value="Exit" class="button"/></td></tr>
+				<tr><td><input type="submit" name="back" value="Back" class="button"/>
+				<input type="submit" name="exit" value="Exit" class="button"/></td></tr>
 
 				</form>
 <?php

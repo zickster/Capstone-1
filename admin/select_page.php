@@ -42,6 +42,12 @@ include('../includes/db.php');
                         exit();
                 }    
 
+//go back one page
+        if($_POST['back']){
+                        header('Location: select_catagory.php');
+                        exit();
+                }
+
 //return to home page
         if($_POST['exit']){
                         header('Location: index.php');
@@ -111,7 +117,8 @@ include('../includes/db.php');
 ?>
 				<form name="edit" method="post" action="<?php basename($PHP_SELF)?>">
 				<tr>
-				<td><input type="submit" name="exit" value="Exit" class="button"/></td>
+				<td><input type="submit" name="back" value="Back" class="button"/>
+				<input type="submit" name="exit" value="Exit" class="button"/></td>
 				</tr>
 				</form>
 
