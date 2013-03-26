@@ -17,15 +17,26 @@ include('../includes/db.php');
                         header('Location: select_page.php?id='.$id);
                         exit();
                 }    
-        if($_POST['delete']){
+        if($_POST['deactivate']){
 //Added sql security to prevent sql injection
-                $name = mysqli_real_escape_string($db, strip_tags( $_POST['name']));
+                $id = mysqli_real_escape_string($db, strip_tags( $_POST['id']));
 //Set status to 0 if deactivating
-                mysqli_query($db, "UPDATE tbl_dept SET status='0' WHERE name='$name'");
+                mysqli_query($db, "UPDATE tbl_dept SET status='0' WHERE id='$id'");
                 mysqli_close($db);
-                        header('Location: index.php');
+                        header('Location: select_catagory.php?id='.$id);
                         exit();
                 }    
+
+        if($_POST['activate']){
+//Added sql security to prevent sql injection
+                $id = mysqli_real_escape_string($db, strip_tags( $_POST['id']));
+//Set status to 0 if deactivating
+                mysqli_query($db, "UPDATE tbl_dept SET status='1' WHERE id='$id'");
+                mysqli_close($db);
+                        header('Location: select_catagory.php?id='.$id);
+                        exit();
+                }
+
 //return to home page
         if($_POST['exit']){
                         header('Location: index.php');
@@ -50,21 +61,47 @@ include('../includes/db.php');
                 <tr>
                 <td>
                 <table>
-
+				<th>Catagory</th>
+				<th>Status</th>
+				<th>Action</th>
 <?php
 //Retrieve required information from DB and display on page
-			$tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY sort_order");
+			$tresults = mysqli_query($db, "SELECT * FROM tbl_dept ORDER BY sort_order");
                                         if( $trow = mysqli_fetch_array($tresults)){
                                                 do{
 						$name=$trow['name'];
+						$status=$trow['status'];
 						$id=$trow['id'];
 ?>
 				<form name="edit" method="post" action="<?php basename($PHP_SELF)?>">
                                 <tr>
 				<td><?php echo $name ?></td>
-				<td><input type="hidden" name="id" value="<?php echo $id ?>"></td>
-				<td><input type="submit" name="edit" value="Edit" class="button"/></td>
-				<td><input type="submit" name="delete" value="Deactivate" class="button"/></td>
+                                <td><?php
+                                        switch($status){
+                                        case "0":
+                                                $status="Inactive";
+                                                break;
+                                        case "1":
+                                                $status="Active";
+                                                break;
+                                        default:
+                                                $status="Unknown";
+                                }
+                                echo $status ?></td>
+				<td><input type="hidden" name="id" value="<?php echo $id ?>">
+				<input type="submit" name="edit" value="Edit" class="button"/>
+<?php
+	if($status=="Active"){
+?>
+				<input type="submit" name="deactivate" value="Deactivate" class="button"/>
+<?php
+	}
+	if($status=="Inactive"){
+?>	
+				<input type="submit" name="activate" value="Activate      " class="button"/></td>
+<?php
+}
+?>
                                 </tr>
 				</form>
 <?php

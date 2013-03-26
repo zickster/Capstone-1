@@ -128,7 +128,7 @@ include('../includes/db.php');
 				<tr>
 				<tr>
 				<td><input type="submit" name="back" value="Back" class="button"/>
-				<td><input type="submit" name="exit" value="Exit" class="button"/>
+				<input type="submit" name="exit" value="Exit" class="button"/>
 				<input type="submit" name="add" value="Add Article" class="button"/></td>
 				</tr>
 				</form>

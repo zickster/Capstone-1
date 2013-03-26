@@ -108,8 +108,8 @@ include('../../includes/db.php');
 				<td>USer Access Level: </td>
 				<td>
                                                         <select name="level" id="level">
-                                                        <option value="level">User</option>
-                                                        <option value="level">Administrator</option>
+                                                        <option value="User">User</option>
+                                                        <option value="Administrator">Administrator</option>
 				</td>
 				</tr>
                                 <td colspan="2">
