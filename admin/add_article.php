@@ -123,11 +123,12 @@ $tresults = mysqli_query($db, "SELECT p_title FROM tbl_pages WHERE p_title='$p_t
 //Enter valid data into DB
 	mysqli_query($db, "INSERT INTO tbl_pages (p_title, p_sort, dept_id, status) VALUES ('$p_title', '$p_sort', '$dept_id', '$p_activate')");
 
-		$art_type="txt";	
+	$art_type="txt";	
 
 $stresults = mysqli_query($db, "SELECT id FROM tbl_pages WHERE p_title='$p_title'");
         $srow = mysqli_fetch_array($sresults);
         $page_id=$srow['id'];
+
 	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_type, an_sort, page_id, status) VALUES ('$art_name1', '$art_text1', '$art_type', '$an_sort1', '$page_id', '$a_activate1')");
 	if(!empty($art_name2)){
 	mysqli_query($db, "INSERT INTO tbl_articles (art_name, art_text, art_type, an_sort, page_id, status) VALUES ('$art_name2', '$art_text2', '$art_type', '$an_sort2', '$page_id', '$a_activate2')");
