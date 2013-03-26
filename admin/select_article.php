@@ -127,8 +127,19 @@ include('../includes/db.php');
 				<td><?php echo $sort ?></td>
 				<td><input type="hidden" name="id" value="<?php echo $id ?>">
 				<input type="submit" name="edit" value="Edit" class="button"/></td>
+<?php
+	if($status=="Active"){
+?>
 				<td><input type="submit" name="deactivate" value="Deactivate" class="button"/></td>
+<?php
+	}
+	if($status=="Inactive"){
+?>
 				<td><input type="submit" name="activate" value="Activate" class="button"/></td>
+<?php
+	}
+?>
+
                                 </tr>
 				</form>
 <?php
