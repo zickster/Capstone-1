@@ -45,7 +45,7 @@ include('../includes/db.php');
 
         if($_POST['add']){
 //Add An article to current web page
-                        header('Location: add_article.php?id='.$page_id);
+                        header('Location: add_single_article.php?id='.$page_id);
                         exit();
                 }    
 
