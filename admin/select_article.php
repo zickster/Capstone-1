@@ -43,9 +43,19 @@ include('../includes/db.php');
                 }    
 
 
-        if($_POST['add']){
+        if($_POST['add_text']){
 //Add An article to current web page
-                        header('Location: add_single_article.php?id='.$page_id);
+                        header('Location: add_text_article.php?id='.$page_id);
+                        exit();
+                }    
+        if($_POST['add_list']){
+//Add An article to current web page
+                        header('Location: add_list_article.php?id='.$page_id);
+                        exit();
+                }    
+        if($_POST['add_table']){
+//Add An article to current web page
+                        header('Location: add_table_article.php?id='.$page_id);
                         exit();
                 }    
 
@@ -127,9 +137,11 @@ include('../includes/db.php');
 				<form name="edit" method="post" action="<?php basename($PHP_SELF)?>">
 				<tr>
 				<tr>
-				<td><input type="submit" name="back" value="Back" class="button"/>
+				<td colspan="100%"><input type="submit" name="back" value="Back" class="button"/>
 				<input type="submit" name="exit" value="Exit" class="button"/>
-				<input type="submit" name="add" value="Add Article" class="button"/></td>
+				<input type="submit" name="add_text" value="Add Text Article" class="button"/>
+				<input type="submit" name="add_list" value="Add List Article" class="button"/>
+				<input type="submit" name="add_table" value="Add Tablular Article" class="button"/></td>
 				</tr>
 				</form>
 
