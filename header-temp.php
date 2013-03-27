@@ -25,14 +25,14 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <body class = "mainbody">
 <div id="main_header_wrapper">
 
-<div id="main_header">
+<!--<div id="main_header">
 
   <!--        <div id="site_title">
             <p>&nbsp;</p>
             <p>&nbsp;</p>
-        </div> <!-- end of site_title -->
+        </div> <!-- end of site_title 
         
-</div>
+</div>  -->
 
 
 <div class="headercontainer">
@@ -112,6 +112,16 @@ $tresults = mysqli_query($db, "SELECT * FROM institutions WHERE status=1 ORDER B
   </div>
 </div>
 </div>
+<div class="main_body">
+
+<div id="body_background">
+
+	<img src="images/header_content.jpg" width="92" height="40" alt="body_content" /></a>
+	
+</div>
+
+</div>
+
 
 </body>
 </html>

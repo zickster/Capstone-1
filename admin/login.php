@@ -8,7 +8,7 @@
 //Create session variables 
 	session_start();
 //Import header file
-        require('header1.php');
+        require('header.php');
 ?>
 </head>
 

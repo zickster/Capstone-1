@@ -27,7 +27,11 @@ padding-top:20px;
 //margin-top:40px;
 }
   
+.main_body {
+height: 1000px;
+width: auto;
 
+}
 
 #divdiv {
 	/* background-color: #A5B461; */
