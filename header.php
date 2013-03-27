@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="../includes/main.css" rel="stylesheet" type="text/css">
 
-<title>Daily Living ToolKit</title>
+<title>Living Web ToolKit</title>
 <script type="text/javascript">
 function MM_jumpMenu(targ,selObj,restore){ //v3.0
   eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
@@ -13,131 +13,104 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 </script>
 
 <link href="includes/main.css" rel="stylesheet" type="text/css" />
-<?php
+<!-- <?php
 //Create session variables
-session_start();
-//Import DB credentials
-include('includes/db.php');
-?>
-
+// session_start();
+//mport DB credentials
+// include('includes/db.php');
+// ?>
+-->
 
 </head>
 <body class = "mainbody">
+
+<div id="main_header_wrapper">
+
+<div id="main_header">
+
+  <!--        <div id="site_title">
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+        </div> <!-- end of site_title -->
+        
+</div>
+
+
 <div class="headercontainer">
 
-<a href="register.php">Sign Up</a>
-<a href="index.php">Home</a>&nbsp;
-<a href="admin/index.php">Admin</a>&nbsp;
-<a href="edit_account.php">Account</a>&nbsp;
+<!--<a href="register.php">Sign Up</a>-->
+<!--<a href="index.php">Home</a>&nbsp;-->
+<!--<a href="admin/index.php">Admin</a>&nbsp;-->
+<a href="admin/index.php"><img src="images/admin-button.png" width="92" height="40" alt="admin" /></a>
+<!--<a href="edit_account.php">Account</a>&nbsp;-->
 <?php
 //Check if user is logged in, if logge din presnt a logout button, otherwise present a login button
 	if(!empty($_SESSION['app_username']) && !empty($_SESSION['app_password'])){
 ?>
 <a href="logout.php">Logout</a>&nbsp;
-	<p float="left"><?php echo $_SESSION['app_username']; ?> logged in.</p>
+<p float="left"><?php echo $_SESSION['app_username']; ?> logged in.</p>
 <?php
 }else{
 ?>
-<a href="login.php">Login</a>&nbsp;
+<!--<a href="login.php">Login</a>&nbsp;-->
 <?php
 }	
 ?>
-<div id="wrapper" align="center">
-  <div>
-  <div id="divdiv">
-  <table>
-  <tr><td>
-    <ul>
-      <li><a href="index.php">Departments</a>
-        <ul>
 
-<?php
+<div id="templatemo_header_wrapper">
+   <img src="images/header.png" width="1016" height="120" alt="headerpic" />
+   
+  <div id="wrapper" align="center">
+  
+  <div id='cssmenu'>
+<ul>
+   <li class='active'><a href='index.php'><span>Home</span></a></li>
+   <li class='has-sub'><a href='index.php'><span>Living Toolkit</span></a>
+      <ul>
+         <li><a href='index.php'><span>1. Intro</span></a></li>
+         <li><a href='index.php'><span>2. Housing</span></a></li>
+         <li><a href='index.php'><span>3. Food</span></a></li>
+         <li><a href='index.php'><span>4. Health Wellness</span></a></li>
+         <li><a href='index.php'><span>5. Children</span></a></li>
+         <li><a href='index.php'><span>6. Employment and Education</span></a></li>
+         <li><a href='index.php'><span>7. Transportation</span></a></li>
+         <li class='last'><a href='index.php'><span>6. Employment and Education</span></a></li>
+      </ul>
+   </li>
+   <li><a href='index.php'><span>Links</span></a></li>
+   <li><a href='index.php'><span>Contact Us</span></a></li>
+   <li class='last'><a href='index.php'><span>About Us</span></a></li>
+</ul>
+</div>
+
+
+
+  <div id="divdiv">
+<?php /*?><?php
+//Count how many colleges are in the DB
+$cresults = mysqli_query($db, "SELECT count(id) FROM institutions WHERE status=1");
+				$crow = mysqli_fetch_array($cresults);
+				$count=$crow['count(id)'];			
+
 //Retrieve required data from the DB and publish it on the page
-$tresults = mysqli_query($db, "SELECT * FROM tbl_dept WHERE status=1 ORDER BY sort_order");
+$tresults = mysqli_query($db, "SELECT * FROM institutions WHERE status=1 ORDER BY name LIMIT 0, 5");
                                         if( $trow = mysqli_fetch_array($tresults)){
                                                 do{
 ?>
-                                                <li><a href="dept.php?id=<?php echo $trow['id'] ?>"><?php echo $trow['name'] ?></a></li>
+                                                <li><a href="colleges.php?id=<?php echo $trow['id'] ?>"><?php echo $trow['name'] ?></a></li>
 <?php
                                                 }while($trow = mysqli_fetch_array($tresults));
                                         }
-
+					if($count>5){
 ?>
-        </ul> 
-      </li> 
-      </ul>
-    </td>
-    <td>
-    <ul>
-      <li><a href="index.php">Schedule</a>
-        <ul>
-          <li><a href="http://calendar.fsu.edu/Pages/default.aspx" target="_blank">FSU Schedule</a></li>
-         <li><a href="http://events.ucf.edu/?upcoming=upcoming" target="_blank">UCF Schedule</a></li>
-         <li><a href="http://calendar.ufl.edu/" target="_blank">UF Schedule</a></li>
-         <li><a href="https://calendar.fiu.edu/events/index/calendar:main/" target="_blank">FIU Schedule</a></li>
-          
-          
-          
-          
-          
-          
-        </ul> 
-      </li> 
-      </ul>
-    </td>
-    <td>
-    <ul>
-      <li><a href="index.php">Finacial Aid</a>
-        <ul>
-          <li><a href="http://www.finaid.org/" target="_blank">FinAid</a></li>
-          <li><a href="http://www.fafsa.ed.gov/" target="_blank">FAFSA</a></li>
-          <li><a href="http://studentaid.ed.gov/" target="_blank">Federal Student Aid</a></li>
-         
-          
-          
-          
-          
-          
-        </ul> 
-      </li> 
-      </ul>
-    </td>
-    <td>
-    <ul>
-      <li><a href="index.php">Links</a>
-        <ul>
-          <li><a href="http://www.myfloridaprepaid.com/?gclid=CPDmjI6ItrMCFQMFnQodoXoADw" target="_blank">Prepaid</a></li>
-          <li><a href="http://www.stateofflorida.com/Portal/DesktopDefault.aspx" target="_blank">Florda Information Portal</a></li>
-          <li><a href="http://www.fldoe.org/" target="_blank">Florida Education</a></li>
-          <li><a href="http://www.floridacollege.edu/wp-content/uploads/2011/01/codes.of_.conduct.pdf" target="_blank">Florida Conduct</a></li>
-           <li><a href="http://www.floridastudentfinancialaid.org/SSFAD/bf/" target="_blank">Bright Futures</a></li>
-          <li><a href="http://www.fastweb.com/" target="_blank">Fast Web</a></li>
-          
-          
-          
-        </ul> 
-      </li> 
-      </ul>
-    </td>
-    <td>
-    <ul>
-      <li><a href="index.php" target="_blank">Contact Us</a>
-        <ul>
-          <li><a href="e-mails.php" >E-mail</a></li>
-          <li><a href="bpainformation.php">BPA Information</a></li>
-          
-          
-          
-          
-          
-          
-        </ul> 
-      </li> 
-      </ul>
-      </td></tr></table>
+                                                <li><a href="more_colleges.php">More Colleges...</a></li>
+<?php
+}
+?><?php */?>
+
     </div>
     </div>
-    </div>
-</div>    
+  </div>
+</div>
 </body>
 </html>
