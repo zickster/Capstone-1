@@ -76,6 +76,7 @@ include('../includes/db.php');
 				<th>Page Name</th>
 				<th>Status</th>
 				<th>Sort Order</th>
+				<th>Actions</th>
 				</tr>
 <?php
 //Retrieve required information from DB and display on page
@@ -90,7 +91,7 @@ include('../includes/db.php');
 				<form name="edit" method="post" action="<?php basename($PHP_SELF)?>">
                                 <tr>
 				<td><?php echo $name ?></td>
-				<td>
+				<td align="center">
 				<?php 
 					switch($status){
 					case "0":
@@ -104,11 +105,21 @@ include('../includes/db.php');
 				}
 				echo $status ?>
 				</td>
-				<td><?php echo $p_sort ?></td>
-				<td><input type="hidden" name="id" value="<?php echo $id ?>">
-				<input type="submit" name="edit" value="Edit" class="button"/></td>
+				<td align="center"><?php echo $p_sort ?>
+				<input type="hidden" name="id" value="<?php echo $id ?>"></td>
+				<td><input type="submit" name="edit" value="Edit" class="button"/></td>
+<?php
+	if($status=="Active"){
+?>
 				<td><input type="submit" name="deactivate" value="Deactivate" class="button"/></td>
+<?php
+	}
+	if($status=="Inactive"){
+?>
 				<td><input type="submit" name="activate" value="Activate" class="button"/></td>
+<?php
+	}
+?>
                                 </tr>
 				</form>
 <?php

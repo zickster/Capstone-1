@@ -293,3 +293,7 @@ a {
 #cssmenu .has-sub .has-sub ul li a:hover {
   background: #f1f30a;
 }
+
+table tr {
+ color: white;
+}
